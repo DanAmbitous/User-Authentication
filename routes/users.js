@@ -6,6 +6,8 @@ const User = require('../models/userPrototype')
 let usersArray;
 
 async function arrayifiyData() {
+  usersArray = ""
+
   usersArray = await User.find();
 }
 
