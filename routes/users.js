@@ -9,6 +9,8 @@ async function arrayifiyData() {
   usersArray = ""
 
   usersArray = await User.find();
+
+  console.log(usersArray)
 }
 
 arrayifiyData()
@@ -35,7 +37,8 @@ router.post('/', async (req, res) => {
 
   const user = new User({
     username: req.body.username,
-    password: hashedPassword
+    password: hashedPassword,
+    role: 'basic'
   })
 
   try {
@@ -55,16 +58,16 @@ router.post('/login', async (req, res) => {
   console.log(req.body.username)
 
   if (user == null) {
-    return res.status(400).send('Cannot find user')
+    return res.status(400).json({ message: 'Cannot find user' })
   }
 
   try {
     console.log(req.body.password, user.password)
 
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send('Success')
+      res.status(200).json({ message: 'Success', user })
     } else {
-      res.send('Not Allowed')
+      res.json({ message: 'Not Allowed' })
     }
   } catch (error) {
     res.status(500).json({message: error.message})

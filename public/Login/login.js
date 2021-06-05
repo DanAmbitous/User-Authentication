@@ -12,10 +12,18 @@ async function posting() {
       },
       body: JSON.stringify(data)
     })
-    const textData = await responseFlow.text()
-    
-    document.querySelector('.user-info').textContent = ""
-    document.querySelector('.user-info').textContent = textData
+    const jsonData = await responseFlow.json()
+ 
+    if (jsonData.message === "Success") {
+      if (jsonData.user.role === "basic") {
+        window.location = "http://localhost:9898/basicUser/basicUser.html";
+      } else if (jsonData.user.role === "admin") {
+        window.location = "http://localhost:9898/adminPage/adminPage.html?";
+      }
+    } else {
+      document.querySelector('.user-info').textContent = ""
+      document.querySelector('.user-info').textContent = JSON.stringify(jsonData)
+    }
   }
 }
 
