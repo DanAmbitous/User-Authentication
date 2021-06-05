@@ -12,9 +12,10 @@ async function posting() {
       },
       body: JSON.stringify(data)
     })
-    const jsonData = await responseFlow.json()
-
-    document.querySelector('.user-info').innerHTML = JSON.stringify(jsonData)
+    const textData = await responseFlow.text()
+    
+    document.querySelector('.user-info').textContent = ""
+    document.querySelector('.user-info').textContent = textData
   }
 }
 
