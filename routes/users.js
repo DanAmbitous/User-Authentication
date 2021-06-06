@@ -56,7 +56,6 @@ router.post('/', async (req, res) => {
 //Login with POST method
 router.post('/login', async (req, res) => {
   usersArray = ""
-
   usersArray = await User.find();
 
   console.log(usersArray)

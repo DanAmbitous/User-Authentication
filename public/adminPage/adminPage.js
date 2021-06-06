@@ -29,13 +29,12 @@ async function getAll() {
   for (user of data) {  
     const infoContainer = document.createElement('div')
     const pUsername = document.createElement('p')
-    pUsername.textContent = user.username
-    const pPassword = document.createElement('p')
-    pPassword.textContent = user.username
+    pUsername.innerHTML = user.username
     const pId = document.createElement('p')
     const hr = document.createElement('hr')
+    const br = document.createElement('br')
     pId.textContent = user._id
-    infoContainer.append(pUsername, pPassword, pId, hr)
+    infoContainer.append(`Username: ${pUsername.innerHTML}`, br, `id: ${pId.innerHTML}`, hr)
     document.querySelector('.users').append(infoContainer)
   } 
 }
