@@ -65,9 +65,19 @@ async function getSpecificUser() {
 
 async function editUser() {
   const username = document.querySelector('#edit-user-username').value
-  const password = document.querySelector('#edit-user-password').value
+  const role = document.querySelector('#role').value
 
+  const data = {username, role}
 
+  await fetch(`http://localhost:9898/users/${document.querySelector("#edit-user").value}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+
+  getAll()
 }
 
 async function removeAllUsers() {

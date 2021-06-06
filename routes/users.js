@@ -50,8 +50,22 @@ router.post('/', async (req, res) => {
 })
 
 //Update a user
-router.patch('/:id', getAUser, (req, res) => {
+router.patch('/:id', getAUser, async (req, res) => {
+  if (req.body.username != null) {
+    res.user.username = req.body.username
+  }
 
+  if (req.body.role != null) {
+    res.user.role = req.body.role
+  }
+
+  try {
+    const updatedUser = await res.user.save()
+
+    res.json(updatedUser)
+  } catch (error) {
+    res.status(400).json({message: error.message})
+  }
 })
 
 //Login with POST method

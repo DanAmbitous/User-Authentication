@@ -6,6 +6,16 @@ GET http://localhost:9898/users/60bc2b5288871a523ca6ecec
 
 ###
 
+PATCH http://localhost:9898/users/60bc4ee273f10f46bc328150
+Content-Type: application/json
+
+{
+  "username": "Elon",
+  "role": "admin"
+}
+
+###
+
 # Signing a user up
 POST http://localhost:9898/users
 Content-Type: application/json
