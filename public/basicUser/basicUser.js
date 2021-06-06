@@ -1,8 +1,8 @@
 async function getAll() {
-  const responseFlow = await fetch('http://localhost:9898/users/')
+  const responseFlow = await fetch('http://localhost:9898/users')
   const data = await responseFlow.json()
 
-  document.querySelector('.users').innerHTML = ""
+  document.querySelector('#users').innerHTML = ""
 
   for (user of data) {  
     const infoContainer = document.createElement('div')
@@ -14,7 +14,7 @@ async function getAll() {
     const hr = document.createElement('hr')
     pId.textContent = user._id
     infoContainer.append(pUsername, pPassword, pId, hr)
-    document.querySelector('.users').append(infoContainer)
+    document.querySelector('#users').append(infoContainer)
   } 
 }
 

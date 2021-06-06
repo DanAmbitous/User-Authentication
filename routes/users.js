@@ -15,6 +15,10 @@ async function arrayifiyData() {
 
 arrayifiyData()
 
+// setInterval(() => {
+//   arrayifiyData()
+// }, 1)
+
 //Get all users
 router.get('/', async (req, res) => {
   try {
@@ -51,7 +55,13 @@ router.post('/', async (req, res) => {
 
 //Login with POST method
 router.post('/login', async (req, res) => {
-  const user = usersArray.find(user => user.username === req.body.username)
+  usersArray = ""
+
+  usersArray = await User.find();
+
+  console.log(usersArray)
+
+  const user = await usersArray.find(user => user.username === req.body.username)
 
   console.log(user)
 
