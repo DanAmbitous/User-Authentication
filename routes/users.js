@@ -15,10 +15,6 @@ async function arrayifiyData() {
 
 arrayifiyData()
 
-// setInterval(() => {
-//   arrayifiyData()
-// }, 1)
-
 //Get all users
 router.get('/', async (req, res) => {
   try {
@@ -53,6 +49,11 @@ router.post('/', async (req, res) => {
   }
 })
 
+//Update a user
+router.patch('/:id', getAUser, (req, res) => {
+
+})
+
 //Login with POST method
 router.post('/login', async (req, res) => {
   usersArray = ""
@@ -85,12 +86,31 @@ router.post('/login', async (req, res) => {
 
 //Delete all users
 router.delete('/', async (req, res) => {
+  let usernames = await User.find()
+  
+  console.log(usernames)
+
   await User.find().deleteMany()
 
-  res.send('Deleted Users')
+  res.send(`Deleted the following users ${usernames}`)
 })
 
+router.delete('/:id', getAUser, async (req, res) => {
+  try {
+    let username = res.user.username
+
+    await res.user.remove()
+
+    res.send(`Deleted the user of ${username}`)
+  } catch (error) {
+    res.status(500).json({message: error.message})
+  }
+})
+
+
 async function getAUser(req, res, next) {
+  let user
+
   try {
     user = await User.findById(req.params.id)
 

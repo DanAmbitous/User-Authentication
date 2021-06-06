@@ -2,7 +2,7 @@ GET http://localhost:9898/users
 
 ###
 
-GET http://localhost:9898/users/60bb04e76d272040dc9cf974
+GET http://localhost:9898/users/60bc2b5288871a523ca6ecec
 
 ###
 
@@ -28,3 +28,6 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:9898/users
+
+###
+DELETE http://localhost:9898/users/60bc2b5288871a523ca6ecec

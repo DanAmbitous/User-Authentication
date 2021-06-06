@@ -9,9 +9,50 @@
   <link rel="icon" type="image/png" href="images/appIcon.png">
 </head>
 <body>
-  <h1>Admin Page</h1>
+  <h1>Admin Account</h1>
 
   <button id="delete-all">Delete All</button>
+
+  <br>
+
+  <h2>Get a specific user</h2>
+  <label for="get-specific-user">Id: </label>
+  <input type="text" id="get-specific-user">
+  <button id="get-specific-user-button">Get User</button>
+
+  <div class="get-the-user">
+    
+  </div>
+
+  <br>
+
+  <h2>Delete a specific user</h2>
+  <label for="delete-specific-user">Id: </label>
+  <input type="text" id="delete-specific-user">
+  <button id="delete-specific-user-button">Get User</button>
+
+  <div class="delete-the-user">
+    
+  </div>
+
+  <br>
+
+  <h2>Edit User</h2>
+  <label for="edit-user">Id: </label>
+  <input type="text" id="edit-user">
+
+  <label for="edit-user-username">Username: </label>
+  <input type="text" id="edit-user-username">
+
+  <label for="edit-user-role">role: </label>
+  <select name="role" id="role">
+    <option value="admin">Admin</option>
+    <option value="basic">Basic</option>
+  </select>
+  <button id="edit-user-button">Edit User</button>
+
+  <br>
+  <br>
 
   <div class="users">
 
